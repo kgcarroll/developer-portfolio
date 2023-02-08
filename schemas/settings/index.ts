@@ -6,7 +6,7 @@ import OpenGraphInput from './OpenGraphInput'
 
 export default defineType({
   name: 'settings',
-  title: 'Site Settings',
+  title: 'Configuration',
   type: 'document',
   icon: CogIcon,
   preview: { select: { title: 'title', subtitle: 'description' } },

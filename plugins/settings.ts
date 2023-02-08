@@ -4,6 +4,8 @@
 
 import { definePlugin, type DocumentDefinition } from 'sanity'
 import { type StructureResolver } from 'sanity/desk'
+import { RiUserSettingsLine } from 'react-icons/ri'
+import { GiSettingsKnobs } from 'react-icons/gi'
 
 export const settingsPlugin = definePlugin<{ type: string }>(({ type }) => {
   return {
@@ -42,10 +44,20 @@ export const settingsStructure = (
         .title(typeDef.title)
         .icon(typeDef.icon)
         .child(
-          S.editor()
-            .id(typeDef.name)
-            .schemaType(typeDef.name)
-            .documentId(typeDef.name)
+          S.list()
+            .title('Configuration')
+            .items([
+              S.listItem()
+                .title('Site Options')
+                .icon(GiSettingsKnobs)
+                .child(
+                  S.document().schemaType('settings').documentId('settings')
+                ),
+              S.listItem()
+                .title('Global Settings')
+                .icon(RiUserSettingsLine)
+                .child(S.document().schemaType('global').documentId('global')),
+            ])
         )
 
     // The default root list items (except custom ones)
@@ -55,6 +67,12 @@ export const settingsStructure = (
 
     return S.list()
       .title('Content')
-      .items([settingsListItem, S.divider(), ...defaultListItems])
+      .items([
+        settingsListItem,
+        S.divider(),
+        ...defaultListItems.filter(
+          (listItem: any) => !['global', 'media.tag'].includes(listItem.getId())
+        ),
+      ])
   }
 }

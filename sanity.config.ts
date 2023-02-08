@@ -14,10 +14,12 @@ import { media } from 'sanity-plugin-media'
 import experienceType from 'schemas/experience'
 // import authorType from 'schemas/author'
 import postType from 'schemas/post'
+import professionalReferenceType from 'schemas/professionalReference'
+import projectType from 'schemas/project'
 import settingsType from 'schemas/settings'
+import globalType from 'schemas/global'
 import skillType from 'schemas/skill'
 import toolPlatformType from 'schemas/toolPlatform'
-import projectType from 'schemas/project'
 
 // Custom Sanity.io theme
 import { myTheme } from './theme'
@@ -38,7 +40,9 @@ export default defineConfig({
       skillType,
       toolPlatformType,
       projectType,
+      professionalReferenceType,
       settingsType,
+      globalType,
     ],
   },
   theme: myTheme,
@@ -50,6 +54,10 @@ export default defineConfig({
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
     settingsPlugin({ type: settingsType.name }),
+
+    // Configures the global "new document" button, and document actions, to suit the Settings document singleton
+    // globalPlugin({ type: globalType.name }),
+
     // Add the "Open preview" action
     productionUrl({
       apiVersion,
