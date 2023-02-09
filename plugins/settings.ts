@@ -2,10 +2,10 @@
  * This plugin contains all the logic for setting up the `Settings` singleton
  */
 
+import { GiSettingsKnobs } from 'react-icons/gi'
+import { RiUserSettingsLine } from 'react-icons/ri'
 import { definePlugin, type DocumentDefinition } from 'sanity'
 import { type StructureResolver } from 'sanity/desk'
-import { RiUserSettingsLine } from 'react-icons/ri'
-import { GiSettingsKnobs } from 'react-icons/gi'
 
 export const settingsPlugin = definePlugin<{ type: string }>(({ type }) => {
   return {
