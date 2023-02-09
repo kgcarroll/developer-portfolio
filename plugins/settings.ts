@@ -48,15 +48,15 @@ export const settingsStructure = (
             .title('Configuration')
             .items([
               S.listItem()
+                .title('Global Settings')
+                .icon(RiUserSettingsLine)
+                .child(S.document().schemaType('global').documentId('global')),
+              S.listItem()
                 .title('Site Options')
                 .icon(GiSettingsKnobs)
                 .child(
                   S.document().schemaType('settings').documentId('settings')
                 ),
-              S.listItem()
-                .title('Global Settings')
-                .icon(RiUserSettingsLine)
-                .child(S.document().schemaType('global').documentId('global')),
             ])
         )
 

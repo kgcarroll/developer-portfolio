@@ -1,5 +1,4 @@
 import { CogIcon } from '@sanity/icons'
-import * as demo from 'lib/demo.data'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 import OpenGraphInput from './OpenGraphInput'
@@ -9,25 +8,25 @@ export default defineType({
   title: 'Configuration',
   type: 'document',
   icon: CogIcon,
-  preview: { select: { title: 'title', subtitle: 'description' } },
+  preview: {
+    prepare(selection) {
+      return { title: 'Site Options' }
+    },
+  },
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,
   fields: [
     defineField({
       name: 'title',
-      description: 'This field is the title of your blog.',
       title: 'Title',
       type: 'string',
-      initialValue: demo.title,
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'description',
-      description:
-        'Used both for the <meta> description tag for SEO, and the blog subheader.',
+      description: 'Used for the <meta> description tag for SEO.',
       title: 'Descriprion',
       type: 'array',
-      initialValue: demo.description,
       of: [
         defineArrayMember({
           type: 'block',
@@ -69,7 +68,6 @@ export default defineType({
           name: 'title',
           title: 'Title',
           type: 'string',
-          initialValue: demo.ogImageTitle,
         }),
       ],
     }),
