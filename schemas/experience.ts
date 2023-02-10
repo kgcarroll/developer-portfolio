@@ -1,5 +1,4 @@
 import { MdWorkOutline } from 'react-icons/md'
-// import { format, parseISO } from 'date-fns'
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
@@ -112,11 +111,17 @@ export default defineType({
         }),
         defineField({
           name: 'points',
-          title: 'Data Points',
+          title: 'Responsibilities',
           type: 'array',
           of: [{ type: 'string' }],
         }),
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'companyInformation.company',
+      media: 'companyInformation.companyIcon',
+    },
+  },
 })

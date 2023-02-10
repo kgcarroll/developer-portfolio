@@ -20,6 +20,7 @@ export default defineType({
       name: 'personalInformation',
       options: {
         collapsible: true,
+        collapsed: true,
       },
       fieldsets: [
         { name: 'personalInformation', title: 'Personal Information' },
@@ -63,6 +64,7 @@ export default defineType({
       name: 'contactInformation',
       options: {
         collapsible: true,
+        collapsed: true,
       },
       fieldsets: [{ name: 'contactInformation', title: 'Contact Information' }],
       fields: [
@@ -90,6 +92,7 @@ export default defineType({
       name: 'homepageContent',
       options: {
         collapsible: true,
+        collapsed: true,
       },
       fieldsets: [{ name: 'homepageContent', title: 'Homepage Content' }],
       fields: [
@@ -110,6 +113,7 @@ export default defineType({
       name: 'education',
       options: {
         collapsible: true,
+        collapsed: true,
       },
       fieldsets: [{ name: 'education', title: 'Education Details' }],
       fields: [
@@ -147,6 +151,7 @@ export default defineType({
       name: 'socialMedia',
       options: {
         collapsible: true,
+        collapsed: true,
       },
       fieldsets: [{ name: 'socialMedia', title: 'Social Media Details' }],
       fields: [

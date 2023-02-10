@@ -37,7 +37,7 @@ export const settingsPlugin = definePlugin<{ type: string }>(({ type }) => {
 export const settingsStructure = (
   typeDef: DocumentDefinition
 ): StructureResolver => {
-  return (S) => {
+  return (S, context) => {
     // The `Settings` root list item
     const settingsListItem = // A singleton not using `documentListItem`, eg no built-in preview
       S.listItem()
