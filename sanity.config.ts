@@ -18,6 +18,7 @@ import professionalReferenceType from 'schemas/professionalReference'
 import projectType from 'schemas/project'
 import settingsType from 'schemas/settings'
 import skillType from 'schemas/skill'
+import taxonomyType from 'schemas/taxonomy'
 import toolPlatformType from 'schemas/toolPlatform'
 // import authorType from 'schemas/author'
 
@@ -43,6 +44,7 @@ export default defineConfig({
       professionalReferenceType,
       settingsType,
       globalType,
+      taxonomyType,
     ],
   },
   theme: myTheme,

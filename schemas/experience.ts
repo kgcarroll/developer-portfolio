@@ -65,7 +65,7 @@ export default defineType({
           name: 'dateStarted',
           title: 'Date Started',
           type: 'date',
-          initialValue: () => new Date().toISOString(),
+          // initialValue: () => new Date().toISOString(),
         }),
         defineField({
           name: 'dateEnded',

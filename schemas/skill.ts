@@ -7,16 +7,6 @@ export default defineType({
   type: 'document',
   icon: GiSkills,
   fields: [
-    // {
-    //   name: 'name',
-    //   title: 'Skill',
-    //   type: 'array',
-    //   of: [
-    //     {
-    //       name: 'skillDetails',
-    //       title: 'Skill Details',
-    //       type: 'object',
-    //       fields: [
     defineField({
       name: 'title',
       title: 'Title',
@@ -38,14 +28,11 @@ export default defineType({
         hotspot: true,
       },
     }),
-    // ],
-    //       },
-    //     ],
-    //   },
+    defineField({
+      name: 'category',
+      title: 'Category',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'taxonomy' } }],
+    }),
   ],
-  // preview: {
-  //   select: {
-  //     title: 'title',
-  //   },
-  // },
 })
