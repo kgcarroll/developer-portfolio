@@ -25,6 +25,9 @@ export interface IndexPageProps {
   globalSettings: GlobalSettings
   experience: Experience[]
   skills: Skill[]
+  globalSettings: GlobalSettings
+  experience: Experience[]
+  skills: Skill[]
 }
 
 export default function IndexPage(props: IndexPageProps) {
@@ -32,6 +35,7 @@ export default function IndexPage(props: IndexPageProps) {
     props
   return (
     <div className="z-0 h-screen overflow-x-hidden overflow-y-scroll text-white scrollbar-thin scrollbar-track-lightGreen/10 scrollbar-thumb-teal/20 bg-bgMain">
+     <div className="z-0 h-screen overflow-x-hidden overflow-y-scroll text-white scrollbar-thin scrollbar-track-lightGreen/10 scrollbar-thumb-teal/20 bg-bgMain">
       <Head>
         <IndexPageHead settings={settings} />
       </Head>
@@ -39,12 +43,12 @@ export default function IndexPage(props: IndexPageProps) {
         <Container>
           <SiteHeader social={globalSettings?.socialMedia?.social} />
           <section id="hero" className="h-screen">
-            <div className="flex flex-row text-3xl text-lightGreen">
+            {/* <div className="flex flex-row text-3xl text-lightGreen">
               This is the new homepage
               <div className="h-screen bg-red"></div>
               <div className="h-screen bg-white"></div>
-            </div>
-            {/* <Hero globalSettings={globalSettings} /> */}
+            </div> */}
+            <Hero globalSettings={globalSettings} />
           </section>
           <section id="about" className="">
             <About globalSettings={globalSettings} />
@@ -66,6 +70,7 @@ export default function IndexPage(props: IndexPageProps) {
         {/* <IntroTemplate /> */}
       </Layout>
     </div>
+    </div>  
   )
 }
 
