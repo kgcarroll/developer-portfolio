@@ -4,6 +4,7 @@
 
 import { GiSettingsKnobs } from 'react-icons/gi'
 import { RiUserSettingsLine } from 'react-icons/ri'
+import { BiCategoryAlt } from 'react-icons/bi'
 import { definePlugin, type DocumentDefinition } from 'sanity'
 import { type StructureResolver } from 'sanity/desk'
 
@@ -57,6 +58,16 @@ export const settingsStructure = (
                 .child(
                   S.document().schemaType('settings').documentId('settings')
                 ),
+              S.listItem()
+                .title('Global Taxonomy')
+                .schemaType('taxonomy')
+                .icon(BiCategoryAlt)
+                .child(
+                  S.documentList()
+                    .title('Global Taxonomy')
+                    .filter('_type == "taxonomy"')
+                    .showIcons(false)
+                ),
             ])
         )
 
@@ -71,7 +82,8 @@ export const settingsStructure = (
         settingsListItem,
         S.divider(),
         ...defaultListItems.filter(
-          (listItem: any) => !['global', 'media.tag'].includes(listItem.getId())
+          (listItem: any) =>
+            !['global', 'taxonomy', 'media.tag'].includes(listItem.getId())
         ),
       ])
   }

@@ -1,12 +1,22 @@
 import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api'
 import {
+  type Experience,
+  experienceQuery,
+  type GlobalSettings,
+  globalSettingsQuery,
   indexQuery,
   type Post,
   postAndMoreStoriesQuery,
   postBySlugQuery,
   postSlugsQuery,
+  type ProfessionalReference,
+  professionalReferenceQuery,
   type Settings,
   settingsQuery,
+  type Skill,
+  skillQuery,
+  type ToolsPlatform,
+  toolsPlatformQuery,
 } from 'lib/sanity.queries'
 import { createClient } from 'next-sanity'
 
@@ -22,6 +32,43 @@ export async function getSettings(): Promise<Settings> {
     return (await client.fetch(settingsQuery)) || {}
   }
   return {}
+}
+
+export async function getGlobalSettings(): Promise<GlobalSettings> {
+  if (client) {
+    return (await client.fetch(globalSettingsQuery)) || {}
+  }
+  return {}
+}
+
+export async function getExperience(): Promise<Experience[]> {
+  if (client) {
+    return (await client.fetch(experienceQuery)) || []
+  }
+  return []
+}
+
+export async function getProfessionalReference(): Promise<
+  ProfessionalReference[]
+> {
+  if (client) {
+    return (await client.fetch(professionalReferenceQuery)) || []
+  }
+  return []
+}
+
+export async function getSkill(): Promise<Skill[]> {
+  if (client) {
+    return (await client.fetch(skillQuery)) || []
+  }
+  return []
+}
+
+export async function getToolsPlatform(): Promise<ToolsPlatform[]> {
+  if (client) {
+    return (await client.fetch(toolsPlatformQuery)) || []
+  }
+  return []
 }
 
 export async function getAllPosts(): Promise<Post[]> {

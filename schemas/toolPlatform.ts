@@ -8,16 +8,6 @@ export default defineType({
   type: 'document',
   icon: BsTools,
   fields: [
-    // {
-    //   name: 'name',
-    //   title: 'Tool or Platform',
-    //   type: 'array',
-    //   of: [
-    // {
-    //   name: 'itemDetails',
-    //   title: 'Item Details',
-    //   type: 'object',
-    //   fields: [
     defineField({
       name: 'title',
       title: 'Title',
@@ -31,14 +21,5 @@ export default defineType({
         hotspot: true,
       },
     }),
-    //   ],
-    // },
-    //   ],
-    // },
   ],
-  // preview: {
-  //   prepare(selection) {
-  //     return {title: 'Tools & Platforms'}
-  //   },
-  // },
 })

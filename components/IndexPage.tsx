@@ -1,48 +1,70 @@
 import Container from 'components/BlogContainer'
-import BlogHeader from 'components/BlogHeader'
 import Layout from 'components/BlogLayout'
-import HeroPost from 'components/HeroPost'
 import IndexPageHead from 'components/IndexPageHead'
-import MoreStories from 'components/MoreStories'
-import IntroTemplate from 'intro-template'
-import * as demo from 'lib/demo.data'
-import type { Post, Settings } from 'lib/sanity.queries'
+
+import SiteHeader from 'components/global/SiteHeader'
+import Hero from './homepage/HomeHero'
+import About from './homepage/About'
+import ProfessionalExperience from './homepage/experience/ProfessionalExperience'
+import Skills from './homepage/skills/Skills'
+import Contact from './homepage/Contact'
+
+import type {
+  Experience,
+  GlobalSettings,
+  Settings,
+  Skill,
+} from 'lib/sanity.queries'
 import Head from 'next/head'
+import Education from './homepage/Education'
 
 export interface IndexPageProps {
   preview?: boolean
   loading?: boolean
-  posts: Post[]
   settings: Settings
+  globalSettings: GlobalSettings
+  experience: Experience[]
+  skills: Skill[]
 }
 
 export default function IndexPage(props: IndexPageProps) {
-  const { preview, loading, posts, settings } = props
-  const [heroPost, ...morePosts] = posts || []
-  const { title = demo.title, description = demo.description } = settings || {}
-
+  const { preview, loading, globalSettings, experience, settings, skills } =
+    props
   return (
-    <>
+    <div className="z-0 h-screen overflow-x-hidden overflow-y-scroll text-white scrollbar-thin scrollbar-track-lightGreen/10 scrollbar-thumb-teal/20 bg-bgMain">
       <Head>
         <IndexPageHead settings={settings} />
       </Head>
       <Layout preview={preview} loading={loading}>
         <Container>
-          <BlogHeader title={title} description={description} level={1} />
-          {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
-            />
-          )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+          <SiteHeader social={globalSettings?.socialMedia?.social} />
+          <section id="hero" className="h-screen">
+            <div className="flex flex-row text-3xl text-lightGreen">
+              This is the new homepage
+              <div className="h-screen bg-red"></div>
+              <div className="h-screen bg-white"></div>
+            </div>
+            {/* <Hero globalSettings={globalSettings} /> */}
+          </section>
+          <section id="about" className="">
+            <About globalSettings={globalSettings} />
+          </section>
+          <section id="experience" className="">
+            <ProfessionalExperience experience={experience} />
+          </section>
+          <section id="skills" className="">
+            <Skills skills={skills} globalSettings={globalSettings} />
+            <Education globalSettings={globalSettings} />
+          </section>
+          {/* <section id="projects" className="">
+            <PersonalProjects projects={projects} />
+          </section> */}
+          <section id="contact" className="">
+            <Contact globalSettings={globalSettings} />
+          </section>
         </Container>
-        <IntroTemplate />
+        {/* <IntroTemplate /> */}
       </Layout>
-    </>
+    </div>
   )
 }
