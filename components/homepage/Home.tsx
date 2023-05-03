@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Cursor, useTypewriter } from 'react-simple-typewriter'
-import BackgroundCircles from './BackgroundCircles'
 import type { GlobalSettings } from 'lib/sanity.queries'
 import { urlForImage } from 'lib/sanity.image'
 
@@ -10,10 +9,9 @@ type Props = {
   globalSettings: GlobalSettings
 }
 
-const Hero = ({ globalSettings }: Props) => {
+const Home = ({ globalSettings }: Props) => {
   const [text, count] = useTypewriter({
     words: [
-      `Hey there, I'm ${globalSettings?.personalInformation?.name}.`,
       '<Dad />, <Husband />, <Programmer />',
       'const coreSkills = [react, .tsx, .js, tailwindcss];',
       'import { Leader } from "../experienced-developer";',
@@ -23,9 +21,11 @@ const Hero = ({ globalSettings }: Props) => {
     delaySpeed: 2250,
   })
   return (
-    <div className="flex flex-col items-center justify-center h-screen space-y-8 overflow-hidden text-center">
-      <BackgroundCircles />
-      <Image
+    <div className="flex flex-col justify-center items-start md:flex-row h-screen m-0 space-y-8 overflow-hidden text-center">
+      <div className='bg-red-900 w-full md:w-1/2 md:h-screen'></div>
+      <div className='bg-red-300 w-full md:w-1/2 md:h-screen md:mt-0'></div>
+      
+      {/* <Image
         className="relative object-cover w-32 h-32 mx-auto rounded-full"
         src={urlForImage(globalSettings?.homepageContent?.heroImage).url()}
         priority
@@ -38,6 +38,7 @@ const Hero = ({ globalSettings }: Props) => {
           {globalSettings?.personalInformation?.role}
         </h2>
         <h1 className="text-5xl font-semibold lr:text-6xl px-15">
+          <div>Hey there, I&apos;m {globalSettings?.personalInformation?.name}.</div>
           <span>{text}</span>
           <Cursor cursorColor="#60C689" />
         </h1>
@@ -63,9 +64,9 @@ const Hero = ({ globalSettings }: Props) => {
             </button>
           </Link>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
 
-export default Hero
+export default Home

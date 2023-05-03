@@ -1,42 +1,110 @@
-import Container from 'components/BlogContainer'
-import Layout from 'components/BlogLayout'
-import IndexPageHead from 'components/IndexPageHead'
-
-import SiteHeader from 'components/global/SiteHeader'
-
-import type {
-  Experience,
-  GlobalSettings,
+import { PreviewSuspense } from '@sanity/preview-kit'
+import PortfolioPage from 'components/PortfolioPage'
+import {
+  getAllPosts,
+  getSettings,
+  getGlobalSettings,
+  getExperience,
+  getSkill,
+} from 'lib/sanity.client'
+import {
+  Post,
   Settings,
+  GlobalSettings,
+  Experience,
   Skill,
 } from 'lib/sanity.queries'
-import Head from 'next/head'
+import { GetStaticProps } from 'next'
+import { lazy } from 'react'
 
-export interface IndexPageProps {
-  preview?: boolean
-  loading?: boolean
+const PreviewPortfolioPage = lazy(() => import('components/PreviewPortfolioPage'))
+
+interface PageProps {
+  posts: Post[]
   settings: Settings
   globalSettings: GlobalSettings
   experience: Experience[]
   skills: Skill[]
+  preview: boolean
+  token: string | null
 }
 
-export default function IndexPage(props: IndexPageProps) {
-  const { preview, loading, globalSettings, experience, settings, skills } =
-    props
+interface Query {
+  [key: string]: string
+}
+
+interface PreviewData {
+  token?: string
+}
+
+export default function Page({
+  posts,
+  settings,
+  globalSettings,
+  experience,
+  skills,
+  preview,
+  token,
+}: PageProps) {
+  if (preview) {
+    return (
+      <PreviewSuspense
+        fallback={
+          <PortfolioPage
+            loading
+            preview
+            // posts={posts}
+            settings={settings}
+            globalSettings={globalSettings}
+            // experience={experience}
+            // skills={skills}
+          />
+        }
+      >
+        <PreviewPortfolioPage token={token} />
+      </PreviewSuspense>
+    )
+  }
+
   return (
-    <div className="z-0 h-screen overflow-x-hidden overflow-y-scroll text-white scrollbar-thin scrollbar-track-lightGreen/10 scrollbar-thumb-teal/20 bg-bgMain">
-      <Head>
-        <IndexPageHead settings={settings} />
-      </Head>
-      <Layout preview={preview} loading={loading}>
-        <Container>
-          <SiteHeader social={globalSettings?.socialMedia?.social} />
-          <section id="hero" className="h-screen">
-            This is the portfolio.
-          </section>
-        </Container>
-      </Layout>
-    </div>
+    <>
+      {/* {console.log('Experience: ', skills)} */}
+      <PortfolioPage
+        // posts={posts}
+        settings={settings}
+        globalSettings={globalSettings}
+        // experience={experience}
+        // skills={skills}
+      />
+    </>
   )
+}
+
+export const getStaticProps: GetStaticProps<
+  PageProps,
+  Query,
+  PreviewData
+> = async (ctx) => {
+  const { preview = false, previewData = {} } = ctx
+
+  // This order matters.  Order of array below must match the otder of query call.
+  const [globalSettings, settings, posts = [], experience = [], skills = []] =
+    await Promise.all([
+      getGlobalSettings(),
+      getSettings(),
+      getAllPosts(),
+      getExperience(),
+      getSkill(),
+    ])
+  return {
+    props: {
+      posts,
+      settings,
+      globalSettings,
+      experience,
+      skills,
+      preview,
+      token: previewData.token ?? null,
+    },
+  }
 }
