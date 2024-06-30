@@ -128,6 +128,14 @@ export default defineType({
           type: 'string',
         }),
         defineField({
+          name: 'collegePic',
+          title: 'College Picture',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        }),
+        defineField({
           name: 'dateStarted',
           title: 'Date Enrolled',
           type: 'date',

@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer components {
+  .grid-reverse {
+    direction: rtl;
+  }
   .heroBtn {
     @apply z-30 rounded-full border px-4 py-2 text-xs uppercase tracking-widest transition-all duration-[250ms];
   }

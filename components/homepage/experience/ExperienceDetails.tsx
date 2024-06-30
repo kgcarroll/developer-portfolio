@@ -32,7 +32,7 @@ const ExperienceDetails = ({ experience }: Props) => {
             Technology Stack
           </p>
           {/* <div className="flex my-4 mt-3 mb-8 space-x-2"> */}
-          <div className="grid grid-cols-6 gap-3 mt-3 mb-8">
+          <div className="grid grid-reverse grid-cols-6 gap-3 mt-3 mb-8">
             {experience?.jobFunction?.technologies &&
               experience?.jobFunction?.technologies.map((skill) => (
                 <Image

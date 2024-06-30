@@ -19,11 +19,11 @@ const Skills = ({ skills, globalSettings }: Props) => {
       <h3 className="mt-24 text-2xl uppercase tracking-[20px] text-lightGreen">
         Skills
       </h3>
-      <h3 className="mt-2 text-sm uppercase tracking-[3px] text-blueLight/20">
+      {/* <h3 className="mt-2 text-sm uppercase tracking-[3px] text-blueLight/20">
         Hover over to for proficiency.
-      </h3>
-      <div className="flex flex-row mt-16">
-        <div className="grid grid-cols-4 gap-5">
+      </h3> */}
+      <div className="flex flex-row mt-16 gap-5">
+        <div className="grid grid-reverse grid-cols-4 gap-5">
           {skills?.slice(0, skills?.length / 2).map((skill) => (
             <SingleSkill
               key={skill?._id + 'left'}

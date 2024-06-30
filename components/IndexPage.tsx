@@ -33,42 +33,40 @@ export default function IndexPage(props: IndexPageProps) {
     props
   return (
     <div className="scrollbar-thin scrollbar-track-lightGreen/10 scrollbar-thumb-teal/20 z-0 h-screen overflow-x-hidden overflow-y-scroll bg-bgMain text-white">
-      <div className="scrollbar-thin scrollbar-track-lightGreen/10 scrollbar-thumb-teal/20 z-0 h-screen overflow-x-hidden overflow-y-scroll bg-bgMain text-white">
-        <Head>
-          <IndexPageHead settings={settings} />
-        </Head>
-        <Layout preview={preview} loading={loading}>
-          <Container>
-            <SiteHeader social={globalSettings?.socialMedia?.social} />
-            <section id="hero" className="h-screen">
-              {/* <div className="flex flex-row text-3xl text-lightGreen">
-              This is the new homepage
-              <div className="h-screen bg-red"></div>
-              <div className="h-screen bg-white"></div>
-            </div> */}
-              <Hero globalSettings={globalSettings} />
-              {/* <Home globalSettings={globalSettings} /> */}
-            </section>
-            <section id="about" className="">
-              <About globalSettings={globalSettings} />
-            </section>
-            <section id="experience" className="">
-              <ProfessionalExperience experience={experience} />
-            </section>
-            <section id="skills" className="">
-              <Skills skills={skills} globalSettings={globalSettings} />
-              <Education globalSettings={globalSettings} />
-            </section>
-            {/* <section id="projects" className="">
-            <PersonalProjects projects={projects} />
-          </section> */}
-            <section id="contact" className="">
-              <Contact globalSettings={globalSettings} />
-            </section>
-          </Container>
-          {/* <IntroTemplate /> */}
-        </Layout>
-      </div>
+      <Head>
+        <IndexPageHead settings={settings} />
+      </Head>
+      <Layout preview={preview} loading={loading}>
+        <Container>
+          <SiteHeader social={globalSettings?.socialMedia?.social} />
+          <section id="hero" className="h-screen">
+            {/* <div className="flex flex-row text-3xl text-lightGreen">
+            This is the new homepage
+            <div className="h-screen bg-red"></div>
+            <div className="h-screen bg-white"></div>
+          </div> */}
+            <Hero globalSettings={globalSettings} />
+            {/* <Home globalSettings={globalSettings} /> */}
+          </section>
+          <section id="about" className="">
+            <About globalSettings={globalSettings} />
+          </section>
+          <section id="experience" className="">
+            <ProfessionalExperience experience={experience} />
+          </section>
+          <section id="skills" className="">
+            <Skills skills={skills} globalSettings={globalSettings} />
+            <Education globalSettings={globalSettings} />
+          </section>
+          {/* <section id="projects" className="">
+          <PersonalProjects projects={projects} />
+        </section> */}
+          <section id="contact" className="">
+            <Contact globalSettings={globalSettings} />
+          </section>
+        </Container>
+        {/* <IntroTemplate /> */}
+      </Layout>
     </div>
   )
 }

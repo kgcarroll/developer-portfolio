@@ -16,7 +16,7 @@ const ProfessionalExperience = ({ experience }: Props) => {
       initial={{ opacity: 0, bottom: -20 }}
       transition={{ duration: 1.2 }}
       whileInView={{ opacity: 1 }}
-      className="relative flex flex-col items-center max-w-6xl px-10 mx-auto text-left justify-evenly md:flex-row md:text-center "
+      className="relative flex flex-col items-center px-10 mx-auto text-left justify-evenly md:flex-row md:text-center "
     >
       <h3 className="absolute top-24 text-2xl uppercase tracking-[20px] text-lightGreen">
         Professional Experience

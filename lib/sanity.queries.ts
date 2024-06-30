@@ -151,6 +151,7 @@ export interface GlobalSettings extends SanityBody {
   education?: {
     college?: string
     collegeLocation?: string
+    collegePic?: Image
     dateEnded?: Date
     dateStarted?: Date
     degree?: string
