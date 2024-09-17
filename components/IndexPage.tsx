@@ -56,6 +56,8 @@ export default function IndexPage(props: IndexPageProps) {
           </section>
           <section id="skills" className="">
             <Skills skills={skills} globalSettings={globalSettings} />
+          </section>
+          <section id="education" className="">
             <Education globalSettings={globalSettings} />
           </section>
           {/* <section id="projects" className="">

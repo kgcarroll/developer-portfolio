@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import type { GlobalSettings } from 'lib/sanity.queries'
 
 type Inputs = {
-  name: string
+  contactname: string
   email: string
   subject: string
   message: string
@@ -29,47 +29,48 @@ const Contact = ({ globalSettings }: Props) => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="relative flex flex-col items-center h-screen px-10 mx-auto text-center max-w-7xl justify-evenly md:flex-row md:text-left"
+      className="relative mx-auto mb-24 flex max-w-7xl flex-col items-center justify-evenly px-10 text-center md:text-left"
     >
-      <h3 className="absolute top-24 text-2xl uppercase tracking-[20px] text-lightGreen">
+      <h3 className="mb-12 mt-24 text-2xl uppercase tracking-[20px] text-lightGreen">
         Contact
       </h3>
       <div className="flex flex-col space-y-10">
-        <h4 className="text-3xl font-semibold text-center">
+        <h4 className="text-center text-3xl font-semibold">
           E-commerce, structured content, custom integrations.
         </h4>
-        {/* <h4 className="font-semibold text-center text-7xl">I got you.</h4> */}
         <p className="text-center uppercase tracking-[4px] text-white/40">
           Just drop me a note.
         </p>
-        <div className="space-y-10">
-          <div className="flex justify-center space-x-5 item-center">
+
+        <div className="space-y-4">
+          <div className="item-center flex justify-center space-x-5">
             <PhoneIcon className="h-7 w-7 animate-pulse text-lightGreen" />
             <p className="text-2xl">
               {globalSettings?.contactInformation?.phoneNumber}
             </p>
           </div>
-          <div className="flex justify-center space-x-5 item-center">
+          <div className="item-center flex justify-center space-x-5">
             <EnvelopeIcon className="h-7 w-7 animate-pulse text-lightGreen" />
             <p className="text-2xl">
               {globalSettings?.contactInformation?.email}
             </p>
           </div>
-          <div className="flex justify-center space-x-5 item-center">
+          <div className="item-center flex justify-center space-x-5">
             <MapPinIcon className="h-7 w-7 animate-pulse text-lightGreen" />
             <p className="text-2xl">
               {globalSettings?.contactInformation?.address}
             </p>
           </div>
         </div>
+
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col mx-auto space-y-2 w-fit"
+          className="mx-auto flex w-fit flex-col space-y-2"
         >
-          <div className="flex space-x-2">
+          <div className="md:flex md:space-x-2">
             <input
-              {...register('name')}
-              className="contactInput"
+              {...register('contactname')}
+              className="contactInput mb-2 md:mb-0"
               type="text"
               placeholder="Name"
             />
@@ -91,7 +92,7 @@ const Contact = ({ globalSettings }: Props) => {
             className="contactInput"
             placeholder="Type your message..."
           />
-          <button className="px-10 py-5 text-lg font-bold rounded-sm bg-lightGreen text-bgMain">
+          <button className="rounded-sm bg-lightGreen px-10 py-5 text-lg font-bold text-bgMain">
             Submit
           </button>
         </form>

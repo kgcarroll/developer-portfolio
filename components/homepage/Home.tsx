@@ -21,10 +21,10 @@ const Home = ({ globalSettings }: Props) => {
     delaySpeed: 2250,
   })
   return (
-    <div className="flex flex-col justify-center items-start md:flex-row h-screen m-0 space-y-8 overflow-hidden text-center">
-      <div className='bg-red-900 w-full md:w-1/2 md:h-screen'></div>
-      <div className='bg-red-300 w-full md:w-1/2 md:h-screen md:mt-0'></div>
-      
+    <div className="m-0 flex h-screen flex-col items-start justify-center space-y-8 overflow-hidden text-center md:flex-row">
+      <div className="w-full bg-red-900 md:h-screen md:w-1/2"></div>
+      <div className="w-full bg-red-300 md:mt-0 md:h-screen md:w-1/2"></div>
+
       {/* <Image
         className="relative object-cover w-32 h-32 mx-auto rounded-full"
         src={urlForImage(globalSettings?.homepageContent?.heroImage).url()}
@@ -58,9 +58,9 @@ const Home = ({ globalSettings }: Props) => {
               Skills
             </button>
           </Link>
-          <Link href="#projects">
+          <Link href="#education">
             <button className="heroBtn border-white/25 bg-bgMain text-lightGreen hover:border-darkPurple hover:bg-teal/5 hover:text-teal">
-              Projects
+              Education
             </button>
           </Link>
         </div>

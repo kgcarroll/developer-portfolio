@@ -11,6 +11,7 @@ import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { media } from 'sanity-plugin-media'
+import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 import experienceType from 'schemas/experience'
 import globalType from 'schemas/global'
 import postType from 'schemas/post'
@@ -69,5 +70,6 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
     media(),
+    vercelDeployTool(),
   ],
 })

@@ -7,9 +7,9 @@
     direction: rtl;
   }
   .heroBtn {
-    @apply z-30 rounded-full border px-4 py-2 text-xs uppercase tracking-widest transition-all duration-[250ms];
+    @apply z-30 rounded-full border px-2 py-1 text-xs uppercase tracking-widest transition-all duration-[250ms] md:px-4 md:py-2 md:text-sm;
   }
   .contactInput {
-    @apply px-6 py-4 text-lg transition-all border rounded-sm outline-none border-lightGreen/50 bg-lightGreen/10 text-white/75 text-darkPurple placeholder-white/30 hover:border-lightGreen focus:border-lightGreen focus:text-lightGreen;
+    @apply px-6 py-4 text-lg transition-all border rounded-sm outline-none border-lightGreen/50 bg-lightGreen/10 w-full text-white/75 placeholder-white/30 hover:border-lightGreen focus:border-lightGreen focus:text-lightGreen;
   }
 }

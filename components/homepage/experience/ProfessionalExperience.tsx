@@ -16,17 +16,17 @@ const ProfessionalExperience = ({ experience }: Props) => {
       initial={{ opacity: 0, bottom: -20 }}
       transition={{ duration: 1.2 }}
       whileInView={{ opacity: 1 }}
-      className="relative flex flex-col items-center px-10 mx-auto text-left justify-evenly md:flex-row md:text-center "
+      className="relative mx-auto flex flex-col items-center justify-evenly px-10 text-center"
     >
-      <h3 className="absolute top-24 text-2xl uppercase tracking-[20px] text-lightGreen">
+      <h3 className="mb-8 text-2xl uppercase tracking-[20px] text-lightGreen md:mb-24">
         Professional Experience
       </h3>
-      <ol className="relative text-left mt-44">
+      <ol className="relative text-left">
         {experience?.map((job) => (
           <li key={job?._id} className="mb-10 xl:mb-16">
             <div className="relative flex flex-col">
               {/* Experience Header */}
-              <span className="right-0 left-0 m-auto flex w-[200px] flex-col items-center justify-center bg-bgMain xl:w-[400px]">
+              <span className="left-0 right-0 m-auto flex w-[200px] flex-col items-center justify-center bg-bgMain xl:w-[400px]">
                 <Image
                   className="md: h-auto w-[300px] object-cover object-center xl:w-[500px]"
                   width="500"
@@ -34,7 +34,7 @@ const ProfessionalExperience = ({ experience }: Props) => {
                   alt=""
                   src={urlForImage(job?.companyInformation?.companyImage).url()}
                 />
-                <p className="p-1 mt-2 uppercase border-b text-bold border-lightGreen/50 text-lightGreen">
+                <p className="text-bold mt-2 border-b border-lightGreen/50 p-1 uppercase text-lightGreen">
                   {new Date(
                     job?.employmentInformation?.dateStarted
                   ).toLocaleDateString('en-us', {
@@ -52,16 +52,18 @@ const ProfessionalExperience = ({ experience }: Props) => {
                       })}
                 </p>
               </span>
-              <div className="flex flex-row">
+              {/* Experience */}
+              <div className="flex flex-col md:flex-row">
                 <ExperienceDetails
                   key={job?._id + 'details'}
                   experience={job}
                 />
                 <ExperienceCard key={job?._id + 'card'} experience={job} />
               </div>
+              {/* Tail */}
               <div className="mt-[-5px]">
-                <div className="right-0 left-0 m-auto flex w-[25px] flex-col items-center justify-center border-t border-lightGreen/50 xl:w-[50px]"></div>
-                <div className="right-0 left-0 m-auto mt-1 flex w-[10px] flex-col items-center justify-center border-t border-lightGreen/50 xl:w-[25px]"></div>
+                <div className="left-0 right-0 m-auto flex w-[25px] flex-col items-center justify-center border-t border-lightGreen/50 xl:w-[50px]"></div>
+                <div className="left-0 right-0 m-auto mt-1 flex w-[10px] flex-col items-center justify-center border-t border-lightGreen/50 xl:w-[25px]"></div>
               </div>
             </div>
           </li>

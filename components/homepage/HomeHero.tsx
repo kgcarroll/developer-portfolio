@@ -15,33 +15,33 @@ const Hero = ({ globalSettings }: Props) => {
     words: [
       `Hey there, I'm ${globalSettings?.personalInformation?.name}.`,
       '<Dad />, <Husband />, <Programmer />',
-      'const coreSkills = [react, .tsx, .js, tailwindcss];',
-      'import { Leader } from "../experienced-developer";',
+      'const skills = [react, .tsx, .js, tailwindcss];',
+      'import { Leader } from "../experience";',
       'const worldTraveler = true;',
     ],
     loop: true,
     delaySpeed: 2250,
   })
   return (
-    <div className="flex flex-col items-center justify-center h-screen space-y-8 overflow-hidden text-center">
+    <div className="flex h-screen flex-col items-center justify-center space-y-8 overflow-hidden text-center">
       <BackgroundCircles />
       <Image
-        className="relative object-cover w-32 h-32 mx-auto rounded-full"
+        className="relative mx-auto h-32 w-32 rounded-full object-cover"
         src={urlForImage(globalSettings?.homepageContent?.heroImage).url()}
         priority
         height="128"
         width="128"
         alt=""
       />
-      <div className="z-30">
-        <h2 className="pb-2 text-sm uppercase tracking-[15px] text-lightGreen"  >
+      <div className="z-30 mx-4 md:mx-0">
+        <h2 className="pb-2 text-sm uppercase tracking-[15px] text-lightGreen">
           {globalSettings?.personalInformation?.role}
         </h2>
-        <h1 className="text-5xl font-semibold lr:text-6xl px-15">
+        <h1 className="lr:text-6xl px-15 min-h-[80px] text-4xl font-semibold md:min-h-fit">
           <span>{text}</span>
           <Cursor cursorColor="#60C689" />
         </h1>
-        <div className="flex flex-row justify-center pt-5 mx-auto gap-x-2">
+        <div className="mx-auto flex flex-row justify-center gap-x-2 pt-5">
           <Link href="#about">
             <button className="heroBtn border-white/25 bg-bgMain text-lightGreen hover:border-darkPurple hover:bg-teal/5 hover:text-teal">
               About
@@ -57,9 +57,9 @@ const Hero = ({ globalSettings }: Props) => {
               Skills
             </button>
           </Link>
-          <Link href="#projects">
+          <Link href="#education">
             <button className="heroBtn border-white/25 bg-bgMain text-lightGreen hover:border-darkPurple hover:bg-teal/5 hover:text-teal">
-              Projects
+              Education
             </button>
           </Link>
         </div>
